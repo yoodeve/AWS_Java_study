@@ -1,4 +1,4 @@
-package ch11_상속;
+package ch12_상속;
 
 public class ProductArray {
 	public static void main(String[] args) {
@@ -16,9 +16,20 @@ public class ProductArray {
 		for (int i = 0; i < products.length; i++) {
 			System.out.println("모델명:" + products[i].getModel());
 			System.out.println("모델명:" + products[i].getPrice());
-			if (i != products.length - 1) {
-				System.out.println("---------------------");
+			// instanceof : legacy
+			if (products[i] instanceof Clothes) {
+				System.out.println("this is clothes");
+				Clothes clothes = (Clothes) products[i];
+				System.out.println(clothes.getSize());
+
+			} else if (products[i] instanceof Computers) {
+				System.out.println("this is computer");
+				Computers computer = (Computers) products[i];
+				System.out.println(computer.getType());
 			}
+
+			if (i != products.length - 1)
+				System.out.println("==============");
 		}
 
 	}

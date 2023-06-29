@@ -1,4 +1,4 @@
-package ch11_상속;
+package ch12_상속;
 
 public class Computers extends Product {
 	private String type;

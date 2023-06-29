@@ -1,4 +1,4 @@
-package ch11_상속;
+package ch12_상속;
 
 public class Clothes extends Product {
 	private String size;
