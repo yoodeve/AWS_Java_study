@@ -1,6 +1,5 @@
 package ch14_싱글톤;
 
-// 시험 : Samsung constructor static private, only method got public
 import java.time.LocalDate;
 
 public class Samsung {
