@@ -10,7 +10,9 @@ public class Samsung {
 	private int autoIncrementSerialNumber = LocalDate.now().getYear() * 10000;
 
 	private Samsung() {
-		companyName = "Samsung";
+		// companyName = "Samsung";
+		// SAMSUNG
+		companyName = Samsung.class.getSimpleName().toUpperCase();
 	}
 
 	// 이 public 메소드를 호출해야만이 삼성객체를 생성가능(Samsung은 static이라 바로접근 가능)
