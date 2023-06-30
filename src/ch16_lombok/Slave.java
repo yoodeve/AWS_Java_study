@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -13,7 +13,9 @@ import lombok.ToString;
 // toString오버라이드
 @ToString
 // noArgu생성자도 생성
-@NoArgsConstructor
+//@NoArgsConstructor
+// requiredconstructor => no는 못씀
+@RequiredArgsConstructor
 // setter
 @Setter
 // getter
@@ -22,7 +24,7 @@ import lombok.ToString;
 // 전부다해도라
 @Data
 public class Slave {
-	private String name;
+	private final String name; // final : req에서 필수값처리
 	// 이렇게 하면 name getter는 작성 안됨
 	@Getter
 	private int age;
