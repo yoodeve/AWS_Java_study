@@ -17,4 +17,28 @@ public class Smartphone extends SmartDevice implements Button {
 		System.out.println("스마트폰의 와이파이를 연결합니다");
 	}
 
+	@Override
+	public void powerOn() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void powerOff() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void voulumeUp() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void volumeDown() {
+		// TODO Auto-generated method stub
+
+	}
+
 }
