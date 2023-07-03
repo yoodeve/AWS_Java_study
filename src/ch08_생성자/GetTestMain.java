@@ -8,6 +8,6 @@ public class GetTestMain {
 		// System.out.println(getTest.name); // 주유구(private 설정 전)
 
 		System.out.println(getTest.getName()); // 주유구(private 설정 후)
-		System.out.println(getTest2.getName()); // 주유구(private 설정 후)
+		System.out.println(getTest2.getName()); // 아무것도 안나옴(private 설정 후)
 	}
 }
