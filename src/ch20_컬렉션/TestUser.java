@@ -1,10 +1,10 @@
 package ch20_컬렉션;
 
 import lombok.Builder;
-import lombok.ToString;
+import lombok.Data;
 
 @Builder
-@ToString
+@Data
 public class TestUser {
 	private String username;
 	private String password;
