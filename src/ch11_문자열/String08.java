@@ -6,7 +6,7 @@ public class String08 {
 
 		String[] strNumbersArr = strNumber.split(",");
 		for (int i = 0; i < strNumbersArr.length; i++) {
-			System.out.print(strNumbersArr[i] + "\s");
+			System.out.print(strNumbersArr[i] + " ");
 		}
 	}
 }

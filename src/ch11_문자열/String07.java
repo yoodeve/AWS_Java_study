@@ -5,6 +5,6 @@ public class String07 {
 		String name = "유정";
 		String address = "부산 남구";
 		// 문자열 합치기
-		System.out.println(name.concat("\s".concat(address)));
+		System.out.println(name.concat(" ".concat(address)));
 	}
 }
