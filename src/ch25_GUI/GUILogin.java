@@ -89,9 +89,7 @@ public class GUILogin extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String username = usernameField.getText();
 				String password = passwordField.getText();
-				// 틀렸을 경우에 if를 걸고, 성공로직은 디폴트
 				if (!username.equals(ADMIN_USERNAME) || !password.equals(ADMIN_PASSWORD)) {
-					// 첫번째 인자: 어떤 것을 부모요소로 삼을건지?(부모요소의 가운데에 모달이 뜸)
 					JOptionPane.showMessageDialog(contentPane, "사용자 정보가 일치하지 않습니다", "로그인 실패",
 							JOptionPane.WARNING_MESSAGE);
 					return;
