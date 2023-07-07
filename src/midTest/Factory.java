@@ -1,4 +1,4 @@
-package test;
+package midTest;
 
 public class Factory {
 	private static Factory instance;

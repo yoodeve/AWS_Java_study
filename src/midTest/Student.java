@@ -1,4 +1,4 @@
-package test;
+package midTest;
 
 public class Student {
 	private int studentCode;

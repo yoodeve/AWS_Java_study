@@ -1,4 +1,4 @@
-package test;
+package midTest;
 
 public class C extends Program {
 	@Override

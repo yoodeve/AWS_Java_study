@@ -1,4 +1,4 @@
-package test;
+package midTest;
 
 public class OrderBuilder {
 	private int orderId;

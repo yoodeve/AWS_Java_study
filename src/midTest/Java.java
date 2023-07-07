@@ -1,4 +1,4 @@
-package test;
+package midTest;
 
 public class Java extends Program {
 

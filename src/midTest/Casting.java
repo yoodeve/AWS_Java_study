@@ -1,4 +1,4 @@
-package test;
+package midTest;
 
 public class Casting {
 
@@ -9,9 +9,9 @@ public class Casting {
 
 		for (int i = 0; i < programs.length; i++) {
 			programs[i].develop();
-			if (programs[i] instanceof Java) {
+			if (programs[i].getClass() == Java.class) {
 				((Java) programs[i]).garbageCollection();
-			} else if (programs[i] instanceof C) {
+			} else if (programs[i].getClass() == C.class) {
 				((C) programs[i]).defineStructure();
 			}
 		}
