@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
@@ -23,8 +24,8 @@ public class GUIMain1 extends JFrame {
 	private JPanel loginLayout;
 	private JPanel nextLayout;
 	private JTextField idTextField;
-	private JTextField pwField;
 	private JButton loginBtn;
+	private JPasswordField pwField;
 
 	/**
 	 * Launch the application.
@@ -57,16 +58,11 @@ public class GUIMain1 extends JFrame {
 		loginLayout = new JPanel();
 		contentPane.add(loginLayout, "loginLayout");
 		loginLayout.setLayout(null);
-
+		
 		idTextField = new JTextField();
-		idTextField.setBounds(75, 24, 199, 43);
+		idTextField.setBounds(75, 30, 199, 37);
 		loginLayout.add(idTextField);
 		idTextField.setColumns(10);
-
-		pwField = new JTextField();
-		pwField.setBounds(75, 77, 199, 37);
-		loginLayout.add(pwField);
-		pwField.setColumns(10);
 
 		loginBtn = new JButton("loginBtn");
 
@@ -85,15 +81,17 @@ public class GUIMain1 extends JFrame {
 					return;
 				}
 				System.out.println("asdf");
-				mainCardLayout.show(contentPane, "nextLayout");
 //				JOptionPane.showMessageDialog(contentPane, "환영합니다!", "로그인 성공", JOptionPane.PLAIN_MESSAGE);
+				mainCardLayout.show(contentPane, "nextLayout");
+
 			}
 		});
 		loginBtn.setBounds(75, 124, 199, 43);
 		loginLayout.add(loginBtn);
 
-		nextLayout = new JPanel();
-		contentPane.add(nextLayout, "nextLayout");
-		nextLayout.setLayout(null);
+		pwField = new JPasswordField();
+		pwField.setBounds(75, 77, 199, 37);
+		loginLayout.add(pwField);
+
 	}
 }
