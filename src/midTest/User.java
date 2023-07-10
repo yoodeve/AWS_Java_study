@@ -45,4 +45,15 @@ public class User {
 		this.email = email;
 	}
 
+	@Override
+	public String toString() {
+//		System.out.println("[사용자 정보]");
+//		System.out.println("username : " + username);
+//		System.out.println("password : " + password);
+//		System.out.println("name : " + name);
+//		System.out.println("email : " + email);
+		return "[사용자 정보]" + "\nusername : " + username + "\npassword : " + password + "\nname : " + name + "\nemail : "
+				+ email;
+	}
+
 }

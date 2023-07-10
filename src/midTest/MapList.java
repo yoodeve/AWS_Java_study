@@ -22,10 +22,8 @@ public class MapList {
 		customers.add(hong);
 		customers.add(kim);
 
-		for (Map<String, Object> customer : customers) {
-			System.out.println("name=" + customer.get("name"));
-			System.out.println("rating=" + customer.get("rating"));
-			System.out.println("age=" + customer.get("age"));
+		for (String key : hong.keySet()) {
+			System.out.println(key + "=" + hong.get(key));
 		}
 	}
 }
