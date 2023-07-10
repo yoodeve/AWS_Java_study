@@ -16,7 +16,7 @@ public class 분신 extends Thread {
 		while (true) {
 			System.out.println(num + "분신 반복!");
 			try {
-				Thread.sleep(3000);
+				Thread.sleep(2000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
