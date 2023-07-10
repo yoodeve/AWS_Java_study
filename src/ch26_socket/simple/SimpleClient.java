@@ -1,6 +1,8 @@
 package ch26_socket.simple;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -11,7 +13,23 @@ public class SimpleClient {
 		Scanner scanner = new Scanner(System.in);
 		try {
 			Socket socket = new Socket("127.0.0.1", 8000);
-			System.out.println("client socket ==>" + socket);
+			Thread inputThread = new Thread(() -> {
+				try {
+					// InputStream inputStream = socket.getInputStream();
+					// InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+					// BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+					// 아래 한 줄과 동일
+					while (true) {
+						BufferedReader bufferedReader = new BufferedReader(
+								new InputStreamReader(socket.getInputStream()));
+						String requestBody = bufferedReader.readLine();
+						System.out.println("내용: " + requestBody);
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			});
+			inputThread.start();
 			while (true) {
 				PrintWriter printWriter = new PrintWriter(socket.getOutputStream(), true);
 				System.out.print("입력: ");

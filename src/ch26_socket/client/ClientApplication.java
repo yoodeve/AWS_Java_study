@@ -1,6 +1,8 @@
 package ch26_socket.client;
 
 import java.awt.EventQueue;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -25,6 +27,7 @@ public class ClientApplication extends JFrame {
 	private JTextField ipTextField;
 	private JTextField portTextField;
 	private JTextField messageTextField;
+	private JButton messageSendButton;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -48,7 +51,7 @@ public class ClientApplication extends JFrame {
 		setContentPane(mainPanel);
 		mainPanel.setLayout(null);
 
-		/* << 채팅 내용부 >> */
+		/* << 채 팅 내 용 부 >> */
 		JScrollPane chatTextAreaScrollPane = new JScrollPane();
 		chatTextAreaScrollPane.setBounds(28, 28, 403, 427);
 		mainPanel.add(chatTextAreaScrollPane);
@@ -58,7 +61,7 @@ public class ClientApplication extends JFrame {
 		chatTextArea.setEditable(false);
 		chatTextAreaScrollPane.setViewportView(chatTextArea);
 
-		/* << 채팅 연결부 >> */
+		/* << 채 팅 연 결 부 >> */
 		ipTextField = new JTextField();
 		ipTextField.setBounds(443, 31, 196, 38);
 		mainPanel.add(ipTextField);
@@ -82,8 +85,12 @@ public class ClientApplication extends JFrame {
 				}
 
 				try {
-					// new Socket(ip, port): 이 프로그램은 이 ip/port로 찾아갈 것이다.
+					// new Socket(ip, port): 이 프로그램은 이 ip/port로 찾아갈 것이다.(소켓객체 생성)
+					// 소켓 연결되면 비활성화 해제 => 버튼 전역으로 뺐음
 					socket = new Socket(serverIp, Integer.parseInt(serverPort));
+					JOptionPane.showMessageDialog(mainPanel, "서버와의 연결에 성공하였습니다", "접속 완료", JOptionPane.PLAIN_MESSAGE);
+					messageTextField.setEditable(true);
+					messageSendButton.setEnabled(true);
 				} catch (NumberFormatException e1) {
 					e1.printStackTrace();
 				} catch (UnknownHostException e1) {
@@ -97,7 +104,7 @@ public class ClientApplication extends JFrame {
 		connectionButton.setBounds(443, 127, 196, 30);
 		mainPanel.add(connectionButton);
 
-		/* << 접속자 >> */
+		/* << 접 속 자 >> */
 		JScrollPane connectedUserListScrollPane = new JScrollPane();
 		connectedUserListScrollPane.setBounds(443, 167, 196, 288);
 		mainPanel.add(connectedUserListScrollPane);
@@ -105,17 +112,26 @@ public class ClientApplication extends JFrame {
 		JList connectedUserList = new JList();
 		connectedUserListScrollPane.setViewportView(connectedUserList);
 
-		/* << 메세지 입력 및 전송 >> */
+		/* << 메 세 지 입 력 및 전 송 >> */
 		messageTextField = new JTextField();
+		messageTextField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) { // key 손 뗄때
+				// 이미 키코드가 상수화 되어있음
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					System.out.println("전송");
+
+				}
+			}
+		});
 		messageTextField.setBounds(28, 465, 403, 28);
 		// 접속 후 입력가능하게 처리
 		messageTextField.setEditable(false);
 		mainPanel.add(messageTextField);
 		messageTextField.setColumns(10);
 
-		JButton messageSendButton = new JButton("전송");
+		messageSendButton = new JButton("전송");
 		messageSendButton.setBounds(443, 465, 112, 28);
-		// setEnabled:활성화, 비활성화 set 함수
 		messageSendButton.setEnabled(false);
 
 		mainPanel.add(messageSendButton);

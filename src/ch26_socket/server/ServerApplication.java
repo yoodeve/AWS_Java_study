@@ -60,8 +60,17 @@ public class ServerApplication {
 							// 연결되면 반응함(socket객체 하나가 하나의 유저, 리스트로 관리해야 여럿이서 채팅 가능)
 							// 그러나 싱글스레드로 하면 채팅이 불가해서
 							// 스레드로 관리해야함.(보내는쪽, 받는쪽 둘 다)
-							// accept: 클라이언트 접속 대기
+							// accept: 클라이언트 접속 대기: 클라가 들어올때마다 연결만. 다른 클라가 들어오면 연결 유지x
+							// 소켓 : 클라이언트
+							// accept : 클라이언트 연결까지 대기, 클라단에서 socket(ip, port)되면 반응함
 							Socket socket = serverSocket.accept();
+							// 접속이 될 때마다 새로 생성
+							ConnectedSocket connectedSocket = new ConnectedSocket(socket);
+							// 매번 생성될 때마다 스레드 실행
+							connectedSocket.start();
+							// ConnectedClientController생성.getter콜해서 리스트가져옴.추가() => 클라이언트 리스트에 추가
+							ConnectedClientController.getInstance().getConnectedSockets().add(connectedSocket);
+							System.out.println(ConnectedClientController.getInstance().getConnectedSockets());
 							System.out.println("접속!!");
 							System.out.println(socket.getInetAddress().getHostAddress());
 						}
@@ -89,7 +98,6 @@ public class ServerApplication {
 				}
 				// interrupt 상태값을 true로 변경
 				connectionThread.interrupt();
-
 				try {
 					// 메인이나 스레드 둘중하나가 랜덤으로 종료된다.
 					// 그래서 join으로 스레드가 먼저 종료되도록 기다려준다. (join : 먼저 종료될때까지 기다려줌)
@@ -101,6 +109,13 @@ public class ServerApplication {
 				return; // 프로그램을 빠져나가야하기 때문에 break; 대신 return;
 			default:
 				System.out.println("다시 선택 하세요");
+				if (serverSocket == null) {
+					try {
+						connectionThread.join(500);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
 			}
 		}
 	}
